@@ -7,43 +7,43 @@ Quaternion q_zero()
     return output;
 }
 
-Quaternion q_add(Quaternion q1, Quaternion q2)
+Quaternion qq_add(Quaternion q, Quaternion w)
 {
     Quaternion output = {
-        q1.s + q2.s,
-        q1.v1 + q2.v1,
-        q1.v2 + q2.v2,
-        q1.v3 + q2.v3
+        q.s + w.s,
+        q.v1 + w.v1,
+        q.v2 + w.v2,
+        q.v3 + w.v3
     };
 
     return output;
 }
 
-Quaternion q_sub(Quaternion q1, Quaternion q2)
+Quaternion qq_sub(Quaternion q, Quaternion w)
 {
     Quaternion output = {
-        q1.s - q2.s,
-        q1.v1 - q2.v1,
-        q1.v2 - q2.v2,
-        q1.v3 - q2.v3
+        q.s - w.s,
+        q.v1 - w.v1,
+        q.v2 - w.v2,
+        q.v3 - w.v3
     };
 
     return output;
 }
 
-Quaternion q_prod(Quaternion q1, Quaternion q2)
+Quaternion qq_prod(Quaternion q, Quaternion w)
 {
     Quaternion output = {
-        q1.s * q2.s  - q1.v1 * q2.v1 - q1.v2 * q2.v2 - q1.v3 * q2.v3,
-        q1.s * q2.v1 + q1.v1 * q2.s  + q1.v2 * q2.v3 - q1.v3 * q2.v2,
-        q1.s * q2.v2 - q1.v1 * q2.v3 + q1.v2 * q2.s  + q1.v3 * q2.v1,
-        q1.s * q2.v3 + q1.v1 * q2.v2 - q1.v2 * q2.v1 + q1.v3 * q2.s
+        q.s * w.s  - q.v1 * w.v1 - q.v2 * w.v2 - q.v3 * w.v3,
+        q.s * w.v1 + q.v1 * w.s  + q.v2 * w.v3 - q.v3 * w.v2,
+        q.s * w.v2 - q.v1 * w.v3 + q.v2 * w.s  + q.v3 * w.v1,
+        q.s * w.v3 + q.v1 * w.v2 - q.v2 * w.v1 + q.v3 * w.s
     };
 
     return output;
 }
 
-Quaternion q_prodd(Quaternion q, double a)
+Quaternion qd_prod(Quaternion q, double a)
 {
     Quaternion output = {
         q.s * a, q.v1 * a, q.v2 * a, q.v3 * a
@@ -76,5 +76,18 @@ Quaternion q_inv(Quaternion q)
     if (length2 == 0)
         return q_zero();
     else
-        return q_prodd(q_conj(q), 1/length2);
+        return qd_prod(q_conj(q), 1/length2);
+}
+
+Quaternion qq_div(Quaternion q, Quaternion w)
+{
+    return qq_prod(q, q_inv(w));
+}
+
+Quaternion qd_div(Quaternion q, double a)
+{
+    Quaternion output = {
+        q.s / a, q.v1 / a, q.v2 / a, q.v3 / a
+    };
+    return output;
 }

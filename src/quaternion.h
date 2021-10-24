@@ -11,10 +11,13 @@ typedef struct Quaternion
     double v3;
 } Quaternion;
 
-Quaternion q_add(Quaternion q1, Quaternion q2);
-Quaternion q_sub(Quaternion q1, Quaternion q2);
-Quaternion q_prod(Quaternion q1, Quaternion q2);
-Quaternion q_prodd(Quaternion q, double a);
+// algebra
+Quaternion qq_add(Quaternion q, Quaternion w);
+Quaternion qq_sub(Quaternion q, Quaternion w);
+Quaternion qq_prod(Quaternion q, Quaternion w);
+Quaternion qd_prod(Quaternion q, double a);
+Quaternion qq_div(Quaternion q, Quaternion w);
+Quaternion qd_div(Quaternion q, double a);
 
 double q_abs2(Quaternion q);
 double q_abs(Quaternion q);
