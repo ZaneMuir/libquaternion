@@ -16,7 +16,8 @@ Quaternion q_sub(Quaternion q1, Quaternion q2);
 Quaternion q_prod(Quaternion q1, Quaternion q2);
 Quaternion q_prodd(Quaternion q, double a);
 
-double q_norm(Quaternion q);
+double q_abs2(Quaternion q);
+double q_abs(Quaternion q);
 Quaternion q_conj(Quaternion q);
 Quaternion q_inv(Quaternion q);
 
