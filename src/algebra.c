@@ -19,6 +19,14 @@ Quaternion qq_add(Quaternion q, Quaternion w)
     return output;
 }
 
+Quaternion qd_add(Quaternion q, double a)
+{
+    Quaternion output = {
+        q.s + a, q.v1, q.v2, q.v3
+    };
+    return output;
+}
+
 Quaternion qq_sub(Quaternion q, Quaternion w)
 {
     Quaternion output = {
@@ -28,6 +36,14 @@ Quaternion qq_sub(Quaternion q, Quaternion w)
         q.v3 - w.v3
     };
 
+    return output;
+}
+
+Quaternion qd_sub(Quaternion q, double a)
+{
+    Quaternion output = {
+        q.s - a, q.v1, q.v2, q.v3
+    };
     return output;
 }
 
@@ -89,5 +105,17 @@ Quaternion qd_div(Quaternion q, double a)
     Quaternion output = {
         q.s / a, q.v1 / a, q.v2 / a, q.v3 / a
     };
+    return output;
+}
+
+double qq_dot(Quaternion q, Quaternion w)
+{
+    Quaternion output = qq_add(qq_prod(q_conj(q), w), qq_prod(q_conj(w), q));
+    return output.s / 2;
+}
+
+Quaternion qq_cross(Quaternion q, Quaternion w)
+{
+    Quaternion output = qq_sub(qq_prod(q, w), qq_prod(w, q));
     return output;
 }
