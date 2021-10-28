@@ -27,6 +27,14 @@ Quaternion qd_add(Quaternion q, double a)
     return output;
 }
 
+Quaternion dq_add(double a, Quaternion q)
+{
+    Quaternion output = {
+        q.s + a, q.v1, q.v2, q.v3
+    };
+    return output;
+}
+
 Quaternion qq_sub(Quaternion q, Quaternion w)
 {
     Quaternion output = {
@@ -47,6 +55,14 @@ Quaternion qd_sub(Quaternion q, double a)
     return output;
 }
 
+Quaternion dq_sub(double a, Quaternion q)
+{
+    Quaternion output = {
+        a - q.s, -q.v1, -q.v2, -q.v3
+    };
+    return output;
+}
+
 Quaternion qq_prod(Quaternion q, Quaternion w)
 {
     Quaternion output = {
@@ -60,6 +76,15 @@ Quaternion qq_prod(Quaternion q, Quaternion w)
 }
 
 Quaternion qd_prod(Quaternion q, double a)
+{
+    Quaternion output = {
+        q.s * a, q.v1 * a, q.v2 * a, q.v3 * a
+    };
+
+    return output;
+}
+
+Quaternion dq_prod(double a, Quaternion q)
 {
     Quaternion output = {
         q.s * a, q.v1 * a, q.v2 * a, q.v3 * a
@@ -105,6 +130,12 @@ Quaternion qd_div(Quaternion q, double a)
     Quaternion output = {
         q.s / a, q.v1 / a, q.v2 / a, q.v3 / a
     };
+    return output;
+}
+
+Quaternion dq_div(double a, Quaternion q)
+{
+    Quaternion output = dq_prod(a, q_inv(q));
     return output;
 }
 

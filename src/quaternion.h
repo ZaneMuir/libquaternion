@@ -19,12 +19,16 @@ Quaternion q_zero();
 // algebra
 Quaternion qq_add(Quaternion q, Quaternion w);
 Quaternion qd_add(Quaternion q, double a);
+Quaternion dq_add(double a, Quaternion q);
 Quaternion qq_sub(Quaternion q, Quaternion w);
 Quaternion qd_sub(Quaternion q, double a);
+Quaternion dq_sub(double a, Quaternion q);
 Quaternion qq_prod(Quaternion q, Quaternion w);
 Quaternion qd_prod(Quaternion q, double a);
+Quaternion dq_prod(double a, Quaternion q);
 Quaternion qq_div(Quaternion q, Quaternion w);
 Quaternion qd_div(Quaternion q, double a);
+Quaternion dq_div(double a, Quaternion q);
 
 double q_abs2(Quaternion q);
 double q_abs(Quaternion q);
